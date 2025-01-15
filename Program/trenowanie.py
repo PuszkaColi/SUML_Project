@@ -26,19 +26,16 @@ def delete_duplicates(df):
 
     return df.drop_duplicates()
 
-
 def show_distinct_values():
     for column in df.columns:
         num_distinct_values = len(df[column].unique())
         print(f"{column}: {num_distinct_values} distinct values")
-
 
 def standardize_data(df):
     numeric_columns = df.select_dtypes(include=[np.number]).columns
     scaler = StandardScaler()
     df[numeric_columns] = scaler.fit_transform(df[numeric_columns])
     return df
-
 
 if __name__ == "__main__":
     df = load_data()
@@ -75,7 +72,6 @@ if __name__ == "__main__":
     feature_names = X.columns
     
     feature_importance_df = pd.DataFrame({'Feature': feature_names, 'Importance': importances})
-
 
     feature_importance_df = feature_importance_df.sort_values(by='Importance', ascending=False).reset_index(drop=True)
 
